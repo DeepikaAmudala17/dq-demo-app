@@ -35,6 +35,14 @@ export async function deleteTodo(id: number): Promise<boolean> {
   return db.remove(id);
 }
 
+export async function setTodoCompleted(
+  id: number,
+  completed: boolean,
+): Promise<db.Todo | null> {
+  const updated = await db.setCompleted(id, completed);
+  return updated ?? null;
+}
+
 export function summary(todo: db.Todo): string {
   const due = todo.dueDate!.toISOString().slice(0, 10);
   return `${todo.title} (due ${due})`;

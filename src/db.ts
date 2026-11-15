@@ -28,6 +28,14 @@ export async function remove(id: number): Promise<boolean> {
   return true;
 }
 
+export async function setCompleted(id: number, completed: boolean): Promise<Todo | undefined> {
+  await tick();
+  const row = rows.find((r) => r.id === id);
+  if (!row) return undefined;
+  row.completed = completed;
+  return { ...row };
+}
+
 export function nextTodoId(): number {
   return nextId++;
 }

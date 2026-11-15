@@ -6,9 +6,10 @@
   "private": false,
   "scripts": {
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "tsc && node dist/server.js",
     "test": "jest"
   },
+
   "dependencies": {
     "express": "^4.21.2"
   },
